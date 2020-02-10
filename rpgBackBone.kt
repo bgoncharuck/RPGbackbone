@@ -149,5 +149,28 @@ class Item {
 }
 
 fun main() {
+  val test: Alchemy.RareDrink= Alchemy.DefaultRareDrink(
+    Alchemy.Code.NONE, Alchemy.DefaultDrink(
+      Alchemy.Code.NONE, Alchemy.DrinkThirst.NONE, Alchemy.DrinkAlcohol.NONE), Alchemy.DefaultPotion(
+        Alchemy.Code.NONE, listOf(
+          Alchemy.DefaultIngredient(
+            Alchemy.Code.NONE, arrayOf(
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42),
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42),
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42),
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42)
+            )
+          ), Alchemy.DefaultIngredient(
+            Alchemy.Code.NONE, arrayOf(
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42),
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42),
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42),
+              Attribute.DefaultConstant(Attribute.Code.NONE, 42)
+            )
+          )
+        ),
+      Alchemy.PotionQuality.NONE)
+    )
 
+    println(test.sideEffect.recipe.get(0).effects[1].value)
 }
