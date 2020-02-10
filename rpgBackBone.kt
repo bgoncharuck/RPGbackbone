@@ -1,4 +1,5 @@
 class Attribute {
+
   enum class Code() {
     NONE
   }
@@ -52,6 +53,94 @@ class Enchantment {
 }
 
 class Alchemy {
+
+  enum class Code() {
+    NONE
+  }
+
+  interface Ingredient {
+    val code: Code
+    val effects: Array<Attribute.Constant>
+  }
+
+  data class DefaultIngredient(val _ingrCode: Code, val _ingrEffects: Array<Attribute.Constant>): Ingredient {
+    override val code: Code= _ingrCode
+    override val effects: Array<Attribute.Constant> = _ingrEffects
+  }
+
+  enum class PotionQuality() {
+    NONE
+  }
+
+  interface Potion {
+    val code: Code
+    val recipe: List<Ingredient>
+    val quality: PotionQuality
+  }
+
+  data class DefaultPotion(val _potionCode: Code, val _potionRecipe: List<Ingredient>, val _potionQuality: PotionQuality): Potion {
+    override val code: Code= _potionCode
+    override val recipe: List<Ingredient> = _potionRecipe
+    override val quality: PotionQuality= _potionQuality
+  }
+
+  enum class FoodSatiety() {
+    NONE
+  }
+
+  interface Food {
+    val code: Code
+    val satiety: FoodSatiety
+  }
+
+  data class DefaultFood(val _fdCode: Code, val _fdSatiety: FoodSatiety): Food {
+    override val code: Code= _fdCode
+    override val satiety: FoodSatiety= _fdSatiety
+  }
+
+  interface RareFood {
+    val code: Code
+    val food: Food
+    val sideEffect: Potion
+  }
+
+  data class DefaultRareFood(val _fdCode: Code, val _fdCommon: Food, val _fdSideEffect: Potion): RareFood {
+    override val code: Code= _fdCode
+    override val food: Food= _fdCommon
+    override val sideEffect: Potion= _fdSideEffect
+  }
+
+  enum class DrinkThirst() {
+    NONE
+  }
+
+  enum class DrinkAlcohol() {
+    NONE
+  }
+
+  interface Drink {
+    val code: Code
+    val thirst: DrinkThirst
+    val alcohol: DrinkAlcohol
+  }
+
+  data class DefaultDrink(val _drnkCode: Code, val _drnkThirst: DrinkThirst, val _drnkAlcohol: DrinkAlcohol): Drink {
+    override val code: Code= _drnkCode
+    override val thirst: DrinkThirst= _drnkThirst
+    override val alcohol: DrinkAlcohol= _drnkAlcohol
+  }
+
+  interface RareDrink {
+    val code: Code
+    val drink: Drink
+    val sideEffect: Potion
+  }
+
+  data class DefaultRareDrink(val _drnkCode: Code, val _drnkCommon: Drink, val _drnkSideEffect: Potion): RareDrink {
+    override val code: Code= _drnkCode
+    override val drink: Drink= _drnkCommon
+    override val sideEffect: Potion= _drnkSideEffect
+  }
 
 }
 
