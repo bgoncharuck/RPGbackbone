@@ -1,6 +1,6 @@
 class Attribute {
 
-  enum class Code() {
+  enum class Code {
     NONE
   }
 
@@ -54,7 +54,7 @@ class Enchantment {
 
 class Alchemy {
 
-  enum class Code() {
+  enum class Code {
     NONE
   }
 
@@ -68,7 +68,7 @@ class Alchemy {
     override val effects: Array<Attribute.Constant> = _ingrEffects
   }
 
-  enum class PotionQuality() {
+  enum class PotionQuality {
     NONE
   }
 
@@ -84,7 +84,7 @@ class Alchemy {
     override val quality: PotionQuality= _potionQuality
   }
 
-  enum class FoodSatiety() {
+  enum class FoodSatiety {
     NONE
   }
 
@@ -110,11 +110,11 @@ class Alchemy {
     override val sideEffect: Potion= _fdSideEffect
   }
 
-  enum class DrinkThirst() {
+  enum class DrinkThirst {
     NONE
   }
 
-  enum class DrinkAlcohol() {
+  enum class DrinkAlcohol {
     NONE
   }
 
