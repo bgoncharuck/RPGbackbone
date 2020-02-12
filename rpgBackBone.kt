@@ -144,7 +144,68 @@ class Alchemy {
 
 }
 
-class Item {
+class Equipable {
+
+  enum class Placeholder {
+    NONE,
+    RING,
+    ROBE,
+    HELM
+  }
+
+  interface Item {
+    val placeholder: Placeholder
+  }
+}
+
+class Jewelry {
+
+  enum class Code {
+    NONE
+  }
+
+  interface Ring: Equipable.Item {
+    val code: Code
+  }
+
+  class DefaultRing(val _ringCode: Code): Ring {
+    override val placeholder: Equipable.Placeholder= Equipable.Placeholder.RING
+    override val code: Code= _ringCode
+  }
+
+}
+
+class Clothing {
+
+  enum class Code {
+    NONE
+  }
+
+  interface Robe: Equipable.Item {
+    val code: Code
+  }
+
+  class DefaultRobe(val _robeCode: Code): Robe {
+    override val placeholder: Equipable.Placeholder= Equipable.Placeholder.ROBE
+    override val code: Code= _robeCode
+  }
+
+}
+
+class Armor {
+
+  enum class Code {
+    NONE
+  }
+
+  interface Helm: Equipable.Item {
+    val code: Code
+  }
+
+  class DefaultHelm(val _helmCode: Code): Helm {
+    override val placeholder: Equipable.Placeholder= Equipable.Placeholder.HELM
+    override val code: Code= _helmCode
+  }
 
 }
 
