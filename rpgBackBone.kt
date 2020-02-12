@@ -150,7 +150,8 @@ class Equipable {
     NONE,
     RING,
     ROBE,
-    HELM
+    HELM,
+    SPEAR
   }
 
   interface Item {
@@ -192,6 +193,13 @@ class Clothing {
 
 }
 
+class Defence {
+
+  enum class Type {
+    NONE
+  }
+}
+
 class Armor {
 
   enum class Code {
@@ -200,11 +208,45 @@ class Armor {
 
   interface Helm: Equipable.Item {
     val code: Code
+    val armorValue: Short
+    val additionalDefence: Defence.Type
+    val additionalDefenceValue: Short
   }
 
-  class DefaultHelm(val _helmCode: Code): Helm {
+  class DefaultHelm(val _helmCode: Code, val _helmArmrVal: Short, val _helmAdditionDef: Defence.Type, val _helmAdditionDefVal: Short): Helm {
     override val placeholder: Equipable.Placeholder= Equipable.Placeholder.HELM
     override val code: Code= _helmCode
+    override val armorValue: Short= _helmArmrVal
+    override val additionalDefence: Defence.Type= _helmAdditionDef
+    override val additionalDefenceValue: Short= _helmAdditionDefVal
+  }
+
+}
+
+class Damage {
+
+  enum class Type {
+    NONE
+  }
+}
+
+class Weapon {
+
+  enum class Code {
+    NONE
+  }
+
+  interface Spear: Equipable.Item {
+    val code: Code
+    val weaponDamage: Damage.Type
+    val weaponDamageVal: Short
+  }
+
+  class DefaultSpear(val _spearCode: Code, val _spearWeapDam: Damage.Type, val _spearWeapDamVal: Short): Spear {
+    override val placeholder: Equipable.Placeholder= Equipable.Placeholder.SPEAR
+    override val code: Code= _spearCode
+    override val weaponDamage: Damage.Type= _spearWeapDam
+    override val weaponDamageVal: Short= _spearWeapDamVal
   }
 
 }
