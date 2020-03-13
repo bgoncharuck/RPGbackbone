@@ -3,14 +3,15 @@ package rpgbackbone.Ench
 interface Template {
   val code: Code
   val change: Int
+  var executable: Boolean
   fun execute()
 }
 
 abstract class Damage(val type: Code, val healthShrink: Int): Template {
   protected var healthBar: rpgbackbone.Attribute.Changeable?= null
-  protected var prepared: Boolean= false
+  override var executable: Boolean= false
   override fun execute() {
-    if (prepared) healthBar!!.value-= healthShrink
+    if (executable) healthBar!!.value-= healthShrink
   }
 }
 
@@ -20,11 +21,11 @@ abstract class DamageWithResistanceCheck(val _type: Code, val _healthShrink: Int
   fun prepare(_toDamage: rpgbackbone.Attribute.Changeable, _resistance: rpgbackbone.Attribute.Changeable) {
     healthBar= _toDamage
     resistance= _resistance.value
-    prepared= true
+    executable= true
   }
   override fun execute() {
-    if (prepared) {
-      healthBar!!.value-= if (healthShrink/resistance == 0) 1 else healthShrink/resistance
+    if (executable) {
+      healthBar!!.value-= healthShrink/resistance
     }
   }
 }
