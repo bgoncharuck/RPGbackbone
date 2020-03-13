@@ -1,5 +1,7 @@
 package rpgbackbone.Attribute
 
 enum class Code {
-  NONE
+  NONE,
+  Health,
+  PoisonResistance
 }
