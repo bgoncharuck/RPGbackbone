@@ -1,21 +1,29 @@
 package rpgbackbone
 
 interface Visitor {
-  fun visit(rpgbbobject: RPGBBObject )
+  fun visit(rpgbbobject: RPGBBObject)
 }
 
-interface RPGBBObject {
+interface __rpgbbobject {
   fun accept(visitor: Visitor)
   fun ancsestorAction()
 }
 
-abstract class Decorator(_component: RPGBBObject): RPGBBObject {
-  protected val component: RPGBBObject= _component
-  override fun accept(visitor: Visitor ) {
+interface RPGBBObject: __rpgbbobject {
+  override fun accept(visitor: Visitor) {
     visitor.visit(this)
   }
   override fun ancsestorAction() {
+    return
+  }
+}
+
+abstract class Decorator(_component: RPGBBObject): RPGBBObject {
+  protected val component: RPGBBObject= _component
+  override fun ancsestorAction() {
     component.ancsestorAction()
   }
-  abstract fun action()
+  fun action() {
+    component.ancsestorAction()
+  }
 }
