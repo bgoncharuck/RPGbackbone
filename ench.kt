@@ -1,6 +1,6 @@
 package rpgbackbone.Ench
 
-interface Template {
+interface Template: rpgbackbone.RPGBBObject {
   val code: Code
   val change: Int
   var executable: Boolean
