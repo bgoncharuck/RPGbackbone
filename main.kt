@@ -1,6 +1,6 @@
 package rpgbackbone
 
 fun main() {
-  val berry= rpgbackbone.Ingredient.TrueLoversKnot()
-  println(berry.properties.get(0).change)
+  val kiss= rpgbackbone.Potion.LovelyMaidKiss()
+  println(kiss.poisonEffect)
 }
