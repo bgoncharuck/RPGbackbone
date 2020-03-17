@@ -1,4 +1,4 @@
-ppackage rpgbackbone.Entity
+package rpgbackbone.Entity
 
 interface Template: rpgbackbone.RPGBBObject {
   val health: rpgbackbone.RPGBBObject
@@ -18,7 +18,7 @@ interface Essential: Template {
 }
 
 interface NonEssential: Template {
-  override fun accept(visitor: rpgbackbone.Visitor) {
+  fun accept(visitor: rpgbackbone.Invoker.EntityVisitor) {
     visitor.visit(this)
   }
   override val health: rpgbackbone.Attribute.Changeable
