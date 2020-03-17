@@ -1,6 +1,7 @@
 package rpgbackbone
 
 interface Visitor {
+  fun visit(nonEssentialEntity: rpgbackbone.Entity.NonEssential)
   fun visit(rpgbbobject: RPGBBObject)
 }
 
