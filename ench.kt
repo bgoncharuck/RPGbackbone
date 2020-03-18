@@ -1,34 +1,32 @@
 package rpgbackbone.Ench
 
-interface CommandTemplate: rpgbackbone.RPGBBObject {
+interface Template: rpgbackbone.RPGBBObject {
   val code: Code
   val change: Int
-  var executable: Boolean
-  fun execute()
 }
 
-abstract class Damage(val _type: Code, val healthShrink: Int): CommandTemplate {
-  override val code: Code= _type
-  override val change: Int= healthShrink
-  override var executable: Boolean= false
-
-  protected var healthBar: rpgbackbone.Attribute.Changeable?= null
-  override fun execute() {
-    if (executable) healthBar!!.value-= change
-  }
+abstract class Default(val _code: Code, val _change: Int): Template {
+  override val code: Code= _code
+  override val change: Int= _change
 }
 
-abstract class DamageWithResistanceCheck(val damageType: Code, val _healthShrink: Int) : Damage(damageType, _healthShrink) {
+interface EnchInvokerTemplate: rpgbackbone.Entity.Visitor {
+  val effects: List<Template>
+}
 
-  protected var resistance: Int= 0
-  fun prepare(_toDamage: rpgbackbone.Attribute.Changeable, _resistance: rpgbackbone.Attribute.Changeable) {
-    healthBar= _toDamage
-    resistance= _resistance.value
-    executable= true
-  }
-  override fun execute() {
-    if (executable) {
-      healthBar!!.value-= change/resistance
+class EnchInvoker(val _effects: List<Template>): EnchInvokerTemplate {
+  override val effects: List<Template> = _effects
+  override fun visit(entity: rpgbackbone.Entity.NonEssential) {
+    effects.forEach {
+      ench -> when (ench) {
+        is PoisonDamage -> {
+
+        }
+        else -> {
+
+        }
+      }
     }
   }
+  override fun visit(rpgbbobject: rpgbackbone.RPGBBObject) {return}
 }

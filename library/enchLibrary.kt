@@ -1,3 +1,3 @@
 package rpgbackbone.Ench
 
-class PoisonDamage(val amount: Int): DamageWithResistanceCheck(Code.Poison, amount) {}
+class PoisonDamage(val amount: Int): Default(Code.Poison, amount) {}

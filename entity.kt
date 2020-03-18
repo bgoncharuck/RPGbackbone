@@ -1,33 +1,24 @@
 package rpgbackbone.Entity
 
 interface Template: rpgbackbone.RPGBBObject {
-  val health: rpgbackbone.RPGBBObject
-  fun makeEssential()
-  fun unmakeEssential()
+  val attributes: List<rpgbackbone.RPGBBObject>
   fun isEssential(): Boolean
-  fun __overralDamageResist(): Float
 }
 
-// needs no memory
+// needs less memory
 interface Essential: Template {
-  override val health: rpgbackbone.Attribute.Constant
-  override fun __overralDamageResist(): Float {return 0.0f}
-  override fun makeEssential() {}
-  override fun unmakeEssential() {}
+  override val attributes: List<rpgbackbone.Attribute.Constant>
   override fun isEssential(): Boolean {return true}
 }
 
+interface Visitor: rpgbackbone.Visitor {
+  fun visit(entity: rpgbackbone.Entity.NonEssential)
+}
+
 interface NonEssential: Template {
-  fun accept(visitor: rpgbackbone.Invoker.EntityVisitor) {
+  fun accept(visitor: Visitor) {
     visitor.visit(this)
   }
-  override val health: rpgbackbone.Attribute.Changeable
-  object dev {
-    var overralDamageResistanceControl: Float= 1.0f
-    fun controlOverallDamage(value: Float) {overralDamageResistanceControl= value}
-  }
-  override fun makeEssential() {dev.controlOverallDamage(0.0f)}
-  override fun unmakeEssential() {dev.controlOverallDamage(1.0f)}
-  override fun __overralDamageResist(): Float {return dev.overralDamageResistanceControl}
-  override fun isEssential(): Boolean {if (dev.overralDamageResistanceControl == 1.0f) return true else return false}
+  override val attributes: List<rpgbackbone.Attribute.Changeable>
+  override fun isEssential(): Boolean {return false}
 }
