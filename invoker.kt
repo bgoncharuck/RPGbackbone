@@ -1,13 +1,13 @@
 package rpgbackbone.Invoker
 
 interface EnchTemplate: rpgbackbone.Entity.Visitor {
-  val effects: List<rpgbackbone.Ench.Template>
+  val toApply: List<rpgbackbone.Ench.Template>
 }
 
-class Ench(val _effects: List<rpgbackbone.Ench.Template>): EnchTemplate {
-  override val effects: List<rpgbackbone.Ench.Template> = _effects
+class Ench(val _toApply: List<rpgbackbone.Ench.Template>): EnchTemplate {
+  override val toApply: List<rpgbackbone.Ench.Template> = _toApply
   override fun visit(entity: rpgbackbone.Entity.NonEssential) {
-    effects.forEach {
+    toApply.forEach {
       ench -> when (ench.code) {
 
         rpgbackbone.Ench.Code.Poison -> entity.attributes.find{ health -> health.code == rpgbackbone.Attribute.Code.Health }!!.value -= ench.change / (entity.attributes.find{ resistance -> resistance.code == rpgbackbone.Attribute.Code.PoisonResistance }?.value ?: 1)

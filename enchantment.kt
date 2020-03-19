@@ -35,7 +35,7 @@ abstract class Guardian(val _code: Code, val _effects: List<rpgbackbone.Ench.Tem
   override val effects: List<rpgbackbone.Ench.Template> = _effects
 }
 
-abstract class Demonic(val _code: Code, val _effects: List<rpgbackbone.Ench.Template>): Template {
+abstract class Aura(val _code: Code, val _effects: List<rpgbackbone.Ench.Template>): Template {
   override val code: Code= _code
   override val target: rpgbackbone.Target = rpgbackbone.Target.SELECTED
   override val use: rpgbackbone.Use = rpgbackbone.Use.TIMER
