@@ -2,5 +2,6 @@ package rpgbackbone.Ench
 
 enum class Code{
   NONE,
-  Poison
+  Poison,
+  Heal
 }
