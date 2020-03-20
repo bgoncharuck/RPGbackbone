@@ -2,6 +2,8 @@ package rpgbackbone.Entity
 
 interface Template: rpgbackbone.RPGBBObject {
   val attributes: List<rpgbackbone.RPGBBObject>
+  val buffs: rpgbackbone.Buffs.Template
+  val equipedBuffs: rpgbackbone.Buffs.Template
   fun isEssential(): Boolean
 }
 

@@ -18,7 +18,7 @@ interface PlayersMadeFactoryEffectsCalculationStrategy: rpgbackbone.RPGBBObject 
 
 interface PlayersMadeFactory: rpgbackbone.RPGBBObject {
   var name: String
-  val recipe: List<rpgbackbone.Ingredient.Template>
+  val recipe: MutableList<rpgbackbone.Ingredient.Template>
   var isPoison: Boolean
   var strategy: PlayersMadeFactoryEffectsCalculationStrategy
   fun create(): Template {
