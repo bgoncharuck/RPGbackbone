@@ -1,14 +1,20 @@
 package rpgbackbone.Invoker
 
 interface EnchTemplate: rpgbackbone.Entity.Visitor {
-  val toApply: List<rpgbackbone.Ench.Template>
+  val toApply: MutableList<rpgbackbone.Ench.Template>
+  fun add(ench: List<rpgbackbone.Ench.Template>)
+  fun clean()
 }
 
-class Ench(val _toApply: List<rpgbackbone.Ench.Template>): EnchTemplate {
-  override val toApply: List<rpgbackbone.Ench.Template> = _toApply
+class Ench(): EnchTemplate {
+  override val toApply: MutableList<rpgbackbone.Ench.Template> = mutableListOf()
+  override fun add(ench: List<rpgbackbone.Ench.Template>) { toApply+= ench }
+  override fun clean() { toApply.clear() }
   override fun visit(entity: rpgbackbone.Entity.NonEssential) {
     toApply.forEach {
       ench -> when (ench.code) {
+
+        rpgbackbone.Ench.Code.Fire -> entity.attributes.find{ health -> health.code == rpgbackbone.Attribute.Code.Health }!!.value -= ench.change / (entity.attributes.find{ resistance -> resistance.code == rpgbackbone.Attribute.Code.FireResistance }?.value ?: 1)
 
         rpgbackbone.Ench.Code.Poison -> entity.attributes.find{ health -> health.code == rpgbackbone.Attribute.Code.Health }!!.value -= ench.change / (entity.attributes.find{ resistance -> resistance.code == rpgbackbone.Attribute.Code.PoisonResistance }?.value ?: 1)
 

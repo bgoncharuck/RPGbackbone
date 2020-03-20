@@ -14,13 +14,6 @@ abstract class Artifact(val _code: Code, val _effects: List<rpgbackbone.Ench.Tem
   override val effects: List<rpgbackbone.Ench.Template> = _effects
 }
 
-abstract class Mythic(val _code: Code, val _effects: List<rpgbackbone.Ench.Template>): Template {
-  override val code: Code= _code
-  override val target: rpgbackbone.Target = rpgbackbone.Target.SELF
-  override val use: rpgbackbone.Use = rpgbackbone.Use.TIMER
-  override val effects: List<rpgbackbone.Ench.Template> = _effects
-}
-
 abstract class Charm(val _code: Code, val _effects: List<rpgbackbone.Ench.Template>): Template {
   override val code: Code= _code
   override val target: rpgbackbone.Target = rpgbackbone.Target.SELF
@@ -32,13 +25,6 @@ abstract class Guardian(val _code: Code, val _effects: List<rpgbackbone.Ench.Tem
   override val code: Code= _code
   override val target: rpgbackbone.Target = rpgbackbone.Target.SELECTED
   override val use: rpgbackbone.Use = rpgbackbone.Use.DEMAND
-  override val effects: List<rpgbackbone.Ench.Template> = _effects
-}
-
-abstract class Aura(val _code: Code, val _effects: List<rpgbackbone.Ench.Template>): Template {
-  override val code: Code= _code
-  override val target: rpgbackbone.Target = rpgbackbone.Target.SELECTED
-  override val use: rpgbackbone.Use = rpgbackbone.Use.TIMER
   override val effects: List<rpgbackbone.Ench.Template> = _effects
 }
 

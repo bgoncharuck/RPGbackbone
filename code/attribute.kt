@@ -4,5 +4,6 @@ enum class Code {
   NONE,
   MaxHealth,
   Health,
-  PoisonResistance
+  PoisonResistance,
+  FireResistance
 }

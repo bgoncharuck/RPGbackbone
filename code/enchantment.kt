@@ -1,6 +1,6 @@
 package rpgbackbone.Enchantment
 
 enum class Code {
-  NONE
-  
+  NONE,
+  PurpleSkyFlame
 }
