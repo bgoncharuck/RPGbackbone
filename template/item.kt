@@ -36,7 +36,9 @@ interface Drink: NotEquipable, Usable {
 }
 
 interface Weapon: Equipable, Usable {
-  val slot: WeaponType
+  val type: WeaponType
+  val damage: Byte
+  val speed: Float
 }
 
 interface Clothing: Equipable, Usable {
