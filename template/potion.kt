@@ -3,17 +3,17 @@ package rpgbackbone.Potion
 interface Template: rpgbackbone.RPGBBObject {
   val name: String
   val isPoison: Boolean
-  val effects: List<rpgbackbone.Ench.Template>
+  val effects: List<rpgbackbone.Ench.Visitor>
 }
 
-class Default(val _name: String, val _isPoison: Boolean, _effects: List<rpgbackbone.Ench.Template>): Template {
+class Default(val _name: String, val _isPoison: Boolean, _effects: List<rpgbackbone.Ench.Visitor>): Template {
   override val name: String= _name
   override val isPoison: Boolean= _isPoison
-  override val effects: List<rpgbackbone.Ench.Template> = _effects
+  override val effects: List<rpgbackbone.Ench.Visitor> = _effects
 }
 
 interface PlayersMadeFactoryEffectsCalculationStrategy: rpgbackbone.RPGBBObject {
-  fun calculate(ingridient: List<rpgbackbone.Ingredient.Template>): List<rpgbackbone.Ench.Template>
+  fun calculate(ingridient: List<rpgbackbone.Ingredient.Template>): List<rpgbackbone.Ench.Visitor>
 }
 
 interface PlayersMadeFactory: rpgbackbone.RPGBBObject {
@@ -30,5 +30,5 @@ abstract class PotionByRecipe (val _name: String, val _isPoison: Boolean, val _r
   override val name: String= _name
   override val isPoison: Boolean= _isPoison
   val recipe: List<rpgbackbone.Ingredient.Template> = _recipe
-  override abstract val effects: List<rpgbackbone.Ench.Template>
+  override abstract val effects: List<rpgbackbone.Ench.Visitor>
 }
