@@ -6,7 +6,9 @@ interface EnchTemplate: rpgbackbone.Entity.Visitor {
   fun clean()
 }
 
-class Ench(): EnchTemplate {
+// TODO
+// Redone for every ench
+object Ench: EnchTemplate {
   override val toApply: MutableList<rpgbackbone.Ench.Template> = mutableListOf()
   override fun add(ench: List<rpgbackbone.Ench.Template>) { toApply+= ench }
   override fun clean() { toApply.clear() }

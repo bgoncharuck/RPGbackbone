@@ -13,6 +13,7 @@ interface Essential: Template {
   override fun isEssential(): Boolean {return true}
 }
 
+// TODO
 interface Visitor: rpgbackbone.Visitor {
   fun visit(entity: rpgbackbone.Entity.NonEssential)
 }
