@@ -6,7 +6,7 @@ class PoisonDamage(val amount: Int): Visitor, Default(Code.Poison, amount) {
       health -> health.code == rpgbackbone.Attribute.Code.Health
     }!!.value -= change / (
       entity.attributes.find {
-        resistance -> resistance.code == rpgbackbone.Attribute.Code.FireResistance
+        resistance -> resistance.code == rpgbackbone.Attribute.Code.PoisonResistance
       }?.value ?: 1
     )
   }
