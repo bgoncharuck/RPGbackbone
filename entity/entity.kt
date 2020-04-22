@@ -14,7 +14,7 @@ interface Essential: Template {
 }
 
 interface Visitor: rpgbackbone.Visitor {
-  fun visit(entity: rpgbackbone.Entity.NonEssential)
+  fun visit(entity: Template)
 }
 
 interface NonEssential: Template {

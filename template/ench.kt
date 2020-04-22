@@ -13,4 +13,6 @@ abstract class Default(val _code: Code, val _change: Int): Template {
 
 interface Visitor: Template, rpgbackbone.Entity.Visitor {
   override fun visit(rpgbbobject: rpgbackbone.RPGBBObject) { return }
+  override fun visit(entity: rpgbackbone.Entity.Template) { return }
+  fun visit(entity: rpgbackbone.Entity.NonEssential)
 }

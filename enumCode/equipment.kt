@@ -1,0 +1,23 @@
+package rpgbackbone.Equipment
+
+enum class Slot {
+  NONE,
+  SHIRT,
+  PANTS,
+  SKIRT,
+  AMULET,
+  LEFTRING,
+  RIGHTRING,
+  PLATE,
+  GREAVES,
+  LEFTPAULDRON,
+  RIGHTPAULDRON,
+  LEFTGLOVE,
+  RIGHTGLOVE,
+  BOOTS,
+  HELMET,
+  BELT,
+  ROBE,
+  HAND,
+  HANDS
+}
